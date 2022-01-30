@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://kit.fontawesome.com/683b4b40e3.js"
+    crossorigin="anonymous"
+  ></script>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/playVideo.css">
+</head>
+<body>
+    <div id="container"></div>
+    <div id="bodyContainer">
+        <div id="hide"></div>
+        <div id="left"></div>
+        <div id="right">
+            
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="./scripts/playVideo.js"></script>
+
+<script type="module">
+
+let container = document.getElementById("container");
+
+    import navbar from "../components/navbar.js";
+  container.innerHTML = navbar();
+
+
+  let {
+    videoId,
+    snippet: { title },
+  } = JSON.parse(localStorage.getItem("pavan"));
+
+  let showvideo = document.querySelector("#left");
+
+  let titleOf = document.createElement("p");
+
+  let iframe = document.createElement("iframe");
+
+  iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+  iframe.width = "100%";
+
+  iframe.height = "550px";
+
+  iframe.setAttribute("allowfullscreen", true);
+
+  titleOf.innerText = title;
+
+  titleOf.height = "10%";
+
+  showvideo.append(iframe, titleOf);
+
+  localStorage.removeItem("pavan");  
+
+// ------------------------------------------------------------------------
+
+  let input_value = document.getElementById("input_value");
+  console.log('input_value:', input_value)
+
+
+input_value.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    console.log("ldkhf");
+    youtube3();
+  }
+});
+
+document.querySelector("#fivepx").addEventListener("click", () => {
+  youtube3();
+});
+
+function youtube3(){
+
+  let objData={
+    nameOf:input_value.value
+  }
+
+  console.log(objData);
+
+  localStorage.setItem("home1",JSON.stringify(objData));
+  window.location.href="./index.html";
+
+}
+
+
+
+</script>

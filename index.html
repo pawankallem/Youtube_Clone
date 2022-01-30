@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/683b4b40e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/homePage.css" />
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <div id="bottom_body">
+      <div id="left">
+        <div>
+          <i class="fas fa-home"></i>
+          <div>Home</div>
+        </div>
+        <div>
+          <i class="far fa-compass"></i>
+          <div>Explore</div>
+        </div>
+        <div>
+          <i class="far fa-caret-square-right"></i>
+          <button id="gotoLogin">Login</button>
+        </div>
+      </div>
+      <div id="right">
+        <div id="category">
+          <button onclick="change_value()">music</button>
+          <button onclick="change_value()">mixes</button>
+          <button onclick="change_value()">adventures</button>
+          <button onclick="change_value()">animations</button>
+          <button onclick="change_value()">news</button>
+          <button onclick="change_value()">dance</button>
+          <button onclick="change_value()">nature</button>
+        </div>
+        <div id="showdata"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="./scripts/homePage.js">
+
+</script>
+
+<script type="module">
+  let container = document.getElementById("container");
+  import navbar from "../components/navbar.js";
+  container.innerHTML = navbar();
+
+  document.querySelector("#left_icons").addEventListener("click", toggleItems);
+
+  let expand = "hide";
+
+  function toggleItems() {
+    let toggleLeft = document.getElementById("left");
+
+    if (expand == "show") {
+      toggleLeft.style.width = "15%";
+      toggleLeft.style.display = "block";
+      expand = "hide";
+    } else {
+      toggleLeft.style.width = "3.8%";
+      document.getElementById("right").style.width = "96.2%";
+      expand = "show";
+    }
+  }
+
+
+// --------------------------------------------------------------
+
+document.querySelector("#gotoLogin").addEventListener("click",function(){
+  gotoLogin();
+})
+function gotoLogin(){
+    setTimeout(()=>{
+      window.location.href="./logIn.html";
+    },1000)
+}
+  // ------------------------------------------
+
+
+  let input_value=document.getElementById("input_value");
+
+  let query;
+
+  let que=JSON.parse(localStorage.getItem("home1"));
+  console.log('que:', que)
+
+  input_value.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      query=input_value.value;
+
+      youtube();
+    }
+  });
+
+  document.querySelector("#fivepx").addEventListener("click", () => {
+      query=input_value.value;
+    youtube();
+  });
+
+
+  // -----------------------------------------------------
+
+  if(que==null){
+    query=input_value.value
+  }
+  else{
+    query=que.nameOf
+  }
+
+  youtube();
+
+  localStorage.removeItem("home1");
+  async function youtube() {
+
+    console.log(query);
+    try {
+      let x = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyAeiEv8dmO2Nv2gDPe-uUswEKcGmW54Mt4&maxResults=3`
+      );
+
+      let res = await x.json();
+      console.log('res:', res)
+
+      let videos = res.items;
+
+      console.log('videos:', videos)
+
+      localStorage.removeItem("home");  
+
+
+      appendVideos(videos);
+    } catch (er) {
+      console.log("er:", er);
+    }
+  }
+
+  const showdata = document.getElementById("showdata");
+
+  const appendVideos = (item) => {
+    showdata.innerHTML = "";
+
+    item.forEach(({ snippet, id: { videoId } }) => {
+      let div = document.createElement("div");
+
+      let img = document.createElement("img");
+      img.src = snippet.thumbnails.medium.url;
+
+      let title = document.createElement("p");
+      title.innerText = snippet.title;
+
+      div.append(img, title);
+
+      let obj={
+            snippet,
+            videoId
+        }
+
+      div.onclick=()=>{
+          nextPage(obj);
+      }
+
+      showdata.append(div);
+    });
+  };
+
+  // --------------------------------------------------------
+
+  function nextPage(dataOf){
+
+    localStorage.setItem("pavan",JSON.stringify(dataOf));
+    console.log('data:', dataOf)
+
+
+    window.location.href="./playVideo.html";
+
+  }
+
+
+</script>

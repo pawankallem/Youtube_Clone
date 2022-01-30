@@ -1,0 +1,39 @@
+
+
+#bodyContainer{
+    display: flex;
+    min-height: 700px;
+    width: 100%;
+    color: white;
+
+}
+#hide{
+    width: 0px;
+    height: 100%;
+}
+#left{
+    width: 70%;
+    padding: 20px 15px 0px 50px;
+    background-color: 
+    #202020;
+
+}
+#left>p{
+    padding:10px 10px;
+    font-size: 20px;
+}
+iframe{
+    border: 1px solid transparent;
+}
+#right{
+    width: 30%;
+    background-color: black;
+    display: grid;
+}
+
+#right>div{
+    display: flex;
+    padding: 10px;
+    font-size: 20px;
+    gap: 10px;
+}
