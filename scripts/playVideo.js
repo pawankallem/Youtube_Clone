@@ -2,7 +2,7 @@ youtube();
 
 async function youtube() {
   try {
-    let x = await fetch(`https:youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=in&maxResults=10&key=AIzaSyAeiEv8dmO2Nv2gDPe-uUswEKcGmW54Mt4`);
+    let x = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${rrr}&type=video&key=AIzaSyAeiEv8dmO2Nv2gDPe-uUswEKcGmW54Mt4&maxResults=3`);
     let res = await x.json();
     let videos = res.items;
     console.log('videos:', videos)
