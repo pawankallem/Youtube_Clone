@@ -1,7 +1,7 @@
 # Youtube_Clone
 YouTube's mission is to give everyone a voice and show them the world. Learn about our brand, community, careers and more.
 
-This project build with Html5, Css3, Javascript.
+This project build with Register, Login and Streaming features.
 
 ## Screenshot
 
