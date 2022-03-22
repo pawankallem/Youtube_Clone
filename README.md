@@ -10,6 +10,9 @@ This project build with Html5, Css3, Javascript.
     <img src="pics/Youtube 2nd page.png" width="400px" ></img> 
 </div>
 
+Open this link and start streaming :
+https://youtube-clone-tan.vercel.app/
+
 ## Built With
 
 * [Html5](https://developer.mozilla.org/en-US/docs/Web/HTML)
