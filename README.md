@@ -13,7 +13,7 @@ This project build with Register, Login and Streaming features.
 Open this link and start streaming :
 https://youtube-clone-tan.vercel.app/
 
-## Built With
+## Tech Stack Used
 
 * [Html5](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [Css3](https://developer.mozilla.org/en-US/docs/Web/CSS)
