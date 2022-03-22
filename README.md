@@ -6,8 +6,8 @@ This project build with Html5, Css3, Javascript.
 ## Screenshot
 
 <div align="center">
-    <img src="/screenshot/pic1.jpg" width="400px"</img> 
-    <img src="/screenshot/pict2.jpg" width="400px"</img> 
+    <img src="pics/Youtube 1st page.png" width="400px" ></img> 
+    <img src="pics/Youtube 2nd page.png" width="400px" ></img> 
 </div>
 
 ## Built With
