@@ -5,7 +5,7 @@ function navbar() {
     <div id="left_icons" class="increase"><i class="fas fa-bars"></i></div>
     <div id="navbar">
       <div id="Youtube_icon">
-        <a href="./homePage.html"><i id="icon" class="fab fa-youtube"></i></a>
+        <a href="./index.html"><i id="icon" class="fab fa-youtube"></i></a>
 
         <div id="Yt_name">YouTube <span id="india">IN</span></div>
       </div>
